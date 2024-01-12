@@ -12,7 +12,7 @@ class SearchBar extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <div className="relative">
+        <div className="relative max-w-3xl mx-auto">
           <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
             <svg
               className="w-4 h-4 text-gray-500 dark:text-gray-400"

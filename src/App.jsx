@@ -1,29 +1,20 @@
 import { Component, useState } from "react";
 import "./App.css";
-import SearchBar from "./components/search";
-import Gallery from "./components/imagegallery";
-import { fetchImages } from "./utils/pixabay";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import HomePage from "./pages/home";
+import AboutPage from "./pages/about";
+import ContactsPage from "./pages/contacts";
 
 class App extends Component {
-  state = {
-    imagesData: null,
-  };
-  onSubmit = async (entry) => {
-    try {
-      const imagesData = await fetchImages(entry);
-      console.log("Fetching images for ", entry);
-      console.log("Successfully fetched Images.");
-      this.setState({ imagesData });
-    } catch (error) {
-      console.error("Error fetching Images: ", error);
-    }
-  };
   render() {
     return (
-      <div className="flex flex-col">
-        <SearchBar onSubmit={this.onSubmit} />
-        <Gallery imagesData={this.state.imagesData} />
-      </div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" Component={HomePage} />
+          <Route path="/about" Component={AboutPage} />
+          <Route path="/contact" Component={ContactsPage} />
+        </Routes>
+      </BrowserRouter>
     );
   }
 }
